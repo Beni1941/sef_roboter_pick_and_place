@@ -1,0 +1,10 @@
+gazebo_ros_control/pid_gains:
+  shoulder_joint: {p: 1.0, i: 0.0, d: 1.0}
+  joint_1 : {p: 1.0, i: 0.0, d: 1.0}
+  joint_2 : {p: 1.0, i: 0.0, d: 1.0}
+  joint_3 : {p: 1.0, i: 0.0, d: 1.0}
+  joint_4 : {p: 1.0, i: 0.0, d: 1.0}
+  joint_5 : {p: 1.0, i: 0.0, d: 1.0}
+  joint_6 : {p: 1.0, i: 0.0, d: 1.0}
+  finger_1_joint : {p: 1.0, i: 0.0, d: 1.0}
+  finger_2_joint : {p: 1.0, i: 0.0, d: 1.0}

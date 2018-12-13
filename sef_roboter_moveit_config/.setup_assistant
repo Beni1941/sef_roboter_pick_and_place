@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: sef_roboter_support
+    relative_path: urdf/sr25.urdf
+  SRDF:
+    relative_path: config/sef_roboter.srdf
+  CONFIG:
+    author_name: durovsky
+    author_email: durovsky987@gmail.com
+    generated_timestamp: 1490086963

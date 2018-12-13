@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: gripper_urdf
+    relative_path: urdf/gripper.urdf
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/SCHUNK_64NNB.srdf
+  CONFIG:
+    author_name: Richard Brada
+    author_email: richard.brada@gmail.com
+    generated_timestamp: 1542538356

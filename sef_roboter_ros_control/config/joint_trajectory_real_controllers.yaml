@@ -1,0 +1,66 @@
+# ROS Control Settings -------------------------------------
+# Settings for ros_control control loop
+generic_hw_control_loop:
+  loop_hz: 100
+  cycle_time_error_threshold: 0.02
+
+# Settings for ros_control hardware interface
+hardware_interface:
+   joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+      
+# Publish all joint states ----------------------------------
+# Creates the /joint_states topic necessary in ROS
+joint_state_controller:
+   type:         joint_state_controller/JointStateController
+   publish_rate: 50
+
+# Joint Trajectory Controller -------------------------------
+velocity_trajectory_controller:
+   type: velocity_controllers/JointTrajectoryController
+   joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+   constraints:
+      goal_time: 1.0
+      stopped_velocity_tolerance: 0.2 # Defaults to 0.01
+      joint_1:
+          trajectory: 0.20
+          goal:       0.15
+      joint_2:
+          trajectory: 0.60
+          goal:       0.15
+      joint_3:
+          trajectory: 0.60
+          goal:       0.15
+      joint_4:
+          trajectory: 0.60
+          goal:       0.15
+      joint_5:
+          trajectory: 0.60
+          goal:       0.15
+      joint_6:
+          trajectory: 0.60
+          goal:       0.15
+          
+   gains:
+      joint_1: {p: 8,  i: 0.0, d: 0}
+      joint_2: {p: 10,  i: 0.0, d: 0}
+      joint_3: {p: 10,  i: 0.0, d: 0}
+      joint_4: {p: 13.5,  i: 0.0, d: 0}
+      joint_5: {p: 15,  i: 0.0, d: 0}
+      joint_6: {p: 15,  i: 0.0, d: 0}
+      
+   state_publish_rate:  50 # Defaults to 50
+   action_monitor_rate: 20 # Defaults to 20
+   #hold_trajectory_duration: 0 # Defaults to 0.5
+

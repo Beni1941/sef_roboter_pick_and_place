@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>sef_roboter_gazebo</name>
+  <version>0.1.0</version>
+  <description>Sef Roboter Gazebo package</description>
+  <maintainer email="durovsky987@gmail.com">Frantisek Durovsky</maintainer>
+  <license>BSD</license>
+ 
+  <buildtool_depend>catkin</buildtool_depend>
+    
+</package>

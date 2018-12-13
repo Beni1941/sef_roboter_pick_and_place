@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sr25_claw">
+
+	
+
+	<!-- Import Model -->
+	<xacro:include filename="$(find sef_roboter_support)/urdf/sr25_macro.xacro" />
+	<xacro:sef_roboter prefix=""/>
+	
+	<!-- Import Rviz colors -->
+ 	<xacro:include filename="$(find sef_roboter_support)/urdf/materials.xacro" />
+	<!-- Import Gazebo configuration  -->
+ 	<xacro:include filename="$(find sef_roboter_support)/urdf/sr25.gazebo" />
+	
+      
+
+<!-- Import of the robotiq 2finger 85 universal gripper -->
+	<xacro:include filename="$(find robotiq_2f_model)/model/robotiq_2f_85.urdf.xacro" />
+
+		<xacro:robotiq_2f_85 name="simple_gripper" parent="link_6" precise_collision="false" adaptive_transmission="false" with_pads="true">
+		<origin xyz="0 0 0.036" rpy="0 0 0"/>
+	</xacro:robotiq_2f_85>
+    
+
+  
+</robot>

@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name = "SCHUNK_64NNB" >
+  <xacro:macro name="gripper" params="parent prefix"  >
+    <link name="${prefix}gripper_body">
+      <visual>
+        <origin xyz="0.0 0.035 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://gripper_urdf/meshes/body_without_fingers.stl" scale = "0.001 0.001 0.001" />
+        </geometry>
+        <material name="sef_yellow"/>
+      </visual>
+
+       <collision>
+        <geometry>
+          <mesh filename="package://sef_roboter_support/meshes/sr25/collision/link_1.stl"  />
+        </geometry>
+        <material name="yellow" />
+      </collision>
+     <inertial>
+      <origin xyz="0.034335 0.177684 -0.134564" rpy="0 0 0"/>
+          <mass value="100"/>
+        <inertia ixx="0.681" ixy="-0.024" ixz="0.053"
+            iyy="0.713" iyz="0.160"
+            izz="0.351"/>
+    </inertial>
+
+    </link>
+    <link name="${prefix}gripper_finger_1_base">
+      <visual>
+        <origin xyz="0.0 0.035 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://gripper_urdf/meshes/finger_1_base.stl" scale = "0.001 0.001 0.001" />
+        </geometry>
+        <material name="sef_yellow" />
+      </visual>
+
+      <collision>
+       <geometry>
+         <mesh filename="package://sef_roboter_support/meshes/sr25/collision/link_1.stl"  />
+       </geometry>
+       <material name="yellow" />
+     </collision>
+
+     <inertial>
+     <origin xyz="0.034335 0.177684 -0.134564" rpy="0 0 0"/>
+         <mass value="100"/>
+    <inertia ixx="0.681" ixy="-0.024" ixz="0.053"
+           iyy="0.713" iyz="0.160"
+           izz="0.351"/>
+    </inertial>
+    </link>
+
+
+    <link name="${prefix}gripper_finger_2_base">
+     <visual>
+       <origin xyz="0.0 0.035 0.0" rpy="0 0 0"/>
+       <geometry>
+         <mesh filename="package://gripper_urdf/meshes/finger_2_base.stl" scale = "0.001 0.001 0.001"/>
+       </geometry>
+       <material name="sef_yellow" />
+     </visual>
+     <collision>
+      <geometry>
+        <mesh filename="package://sef_roboter_support/meshes/sr25/collision/link_2.stl"  />
+      </geometry>
+      <material name="yellow" />
+    </collision>
+
+    <inertial>
+    <origin xyz="0.034335 0.177684 -0.134564" rpy="0 0 0"/>
+        <mass value="100"/>
+   <inertia ixx="0.681" ixy="-0.024" ixz="0.053"
+          iyy="0.713" iyz="0.160"
+          izz="0.351"/>
+   </inertial>
+
+
+   </link>
+    <!-- end of link list -->
+
+    <!-- joint list -->
+    <joint name="${prefix}base" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}gripper_body"/>
+      <origin xyz="0.0 0.0 0.0" rpy="-4.71 0 0"/>
+    </joint>
+
+    <joint name="${prefix}finger_1_joint" type="prismatic">
+      <limit effort = "10"
+             velocity = "0.25"
+             upper = "0.01"
+             lower = "0"/>
+      <parent link="${prefix}gripper_body"/>
+      <child link="${prefix}gripper_finger_1_base"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="${prefix}finger_2_joint" type="prismatic">
+      <limit effort = "10"
+             velocity = "0.25"
+             upper = "0"
+             lower = "-0.01"/>
+      <mimic joint="${prefix}finger_1_joint" multiplier="-1"/>
+      <parent link="${prefix}gripper_body"/>
+      <child link="${prefix}gripper_finger_2_base"/>
+      <origin xyz="0 0 0" rpy="0 0 0.0"/>
+    </joint>
+
+    <!-- Transmission list  -->
+    <transmission name = "finger_1_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="finger_1_joint">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="gripper_motor">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name = "finger_2_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="finger_2_joint">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+
+      <actuator name="gripper_motor">
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+
+    </transmission>
+  </xacro:macro>
+
+</robot>

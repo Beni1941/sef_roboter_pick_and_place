@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<robot name="SCHUNK_64NNB" xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find sef_roboter_support)/urdf/sr25.xacro" />
+<!-- Import Model -->
+<xacro:include filename="$(find gripper_urdf)/urdf/gripper_macro.xacro" />
+<xacro:gripper prefix="" parent="tool0"/>
+
+</robot>

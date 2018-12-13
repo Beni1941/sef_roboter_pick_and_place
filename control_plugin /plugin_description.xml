@@ -1,0 +1,10 @@
+
+<library path="libcontrol_plugin">
+  <class name="control_plugin/SR25 Joint Publisher"
+         type="control_plugin::ControlPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      Rviz plugin for SR25 joint publisher    </description>
+
+  </class>
+</library>

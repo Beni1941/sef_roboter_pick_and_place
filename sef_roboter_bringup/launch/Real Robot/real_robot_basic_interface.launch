@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!-- Start real robot hardware interface -->
+  <include file="$(find sef_roboter_ros_control)/launch/hardware.launch"/>
+
+</launch>

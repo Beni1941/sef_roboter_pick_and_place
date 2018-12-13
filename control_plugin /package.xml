@@ -1,0 +1,49 @@
+<package>
+  <name>control_plugin</name>
+  <version>0.10.2</version>
+  <description>
+    Simple plugin for gathering join_state info and publishing them fro SEF roboter.
+    </description>
+  <maintainer email="richard.brada@gmail.com">Richard Brada</maintainer>
+  <license>BSD</license>
+
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>qtbase5-dev</build_depend>
+  <build_depend>rviz</build_depend>
+
+  <run_depend>libqt5-core</run_depend>
+  <run_depend>libqt5-gui</run_depend>
+  <run_depend>libqt5-widgets</run_depend>
+  <run_depend>rviz</run_depend>
+
+  <build_depend>message_generation</build_depend>
+
+<!-- Dole su uvedene podmienky pre MoveIT  -->
+  <build_depend>pluginlib</build_depend>
+  <build_depend>eigen</build_depend>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <build_depend>moveit_ros_perception</build_depend>
+  <build_depend>interactive_markers</build_depend>
+  <build_depend>geometric_shapes</build_depend>
+  <build_depend>moveit_visual_tools</build_depend>
+
+  <run_depend>pluginlib</run_depend>
+  <run_depend>moveit_core</run_depend>
+  <run_depend>moveit_fake_controller_manager</run_depend>
+  <run_depend>moveit_ros_planning_interface</run_depend>
+  <run_depend>moveit_ros_perception</run_depend>
+  <run_depend>interactive_markers</run_depend>
+  <run_depend>moveit_visual_tools</run_depend>
+  <run_depend>joy</run_depend>
+
+
+
+  <export>
+      <rviz plugin="${prefix}/plugin_description.xml"/>
+      <rosdoc config="${prefix}/rosdoc.yaml"/>
+  </export>
+</package>
